@@ -762,6 +762,7 @@ button:hover {
     color: #fff;
     background-color: #333; /* Warna latar belakang yang berbeda untuk kontras */
     box-sizing: border-box;
+    height: auto;
 }
 
 .thank-you h2 {
