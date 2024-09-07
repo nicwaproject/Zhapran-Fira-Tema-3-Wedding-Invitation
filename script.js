@@ -87,7 +87,7 @@ window.addEventListener('resize', function() {
 });
 
   // Countdown timer
-  const targetDate = new Date('2024-09-15T00:00:00');
+  const targetDate = new Date('2024-10-17T09:00:00');
 
   function updateCountdown() {
       const now = new Date();
