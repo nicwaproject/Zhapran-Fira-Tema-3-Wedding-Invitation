@@ -87,15 +87,12 @@ window.addEventListener('resize', function() {
 });
 
   // Countdown timer
-  const targetDate = new Date('2024-10-17T09:00:00');
+  const targetDate = new Date('2024-11-17T09:00:00');
 
   function updateCountdown() {
       const now = new Date();
       const timeDiff = targetDate - now;
-    if (timeDiff <= 0) {
-        clearInterval(intervalId);
-        timeDiff = 0;
-    }
+
       const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
