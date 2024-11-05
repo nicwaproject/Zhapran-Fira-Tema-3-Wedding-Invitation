@@ -87,26 +87,33 @@ window.addEventListener('resize', function() {
 });
 
   // Countdown timer
-  const targetDate = new Date('2024-11-17T09:00:00');
+// Countdown timer
+const targetDate = new Date('2024-09-15T00:00:00');
 
-  function updateCountdown() {
-      const now = new Date();
-      const timeDiff = targetDate - now;
+function updateCountdown() {
+    const now = new Date();
+    let timeDiff = targetDate - now;
 
-      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    if (timeDiff <= 0) {
+        clearInterval(intervalId);
+        timeDiff = 0;
+    }
 
-      document.getElementById('days').textContent = days.toString().padStart(2, '0');
-      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-  }
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-  // Update the countdown every second
-  setInterval(updateCountdown, 1000);
-  updateCountdown(); // Initialize countdown
+    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+}
+
+// Update the countdown every second
+const intervalId = setInterval(updateCountdown, 1000);
+updateCountdown(); // Initialize countdown
+
 
   // Lightbox for gallery images
   const lightbox = document.getElementById('lightbox');
@@ -254,11 +261,9 @@ window.addEventListener('resize', function() {
   };
 
   const observer = new IntersectionObserver(observerCallback, observerOptions);
-  const elements = document.querySelectorAll('.fade-in, .fade-slide');
+  const elements = document.querySelectorAll('.fade-in, .fade-slide, .swipe-left, .swipe-right');
 
   elements.forEach(element => {
       observer.observe(element);
   });
-
-  
 });
